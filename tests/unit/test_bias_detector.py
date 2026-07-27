@@ -10,7 +10,6 @@ class TestBiasDetector:
     """Test suite for BiasDetector."""
 
     # This is an example of a unit test that fails with the current bias detector system.
-
     def test_dismissive_bootcamp_language_detected(self) -> None:
         """Test dismissive bootcamp language is detected as biased."""
         text = "bootcamp graduates can't write production code"
@@ -20,6 +19,7 @@ class TestBiasDetector:
         assert is_biased is True
         assert reason != ""
 
+    # failed
     def test_bootcamp_lacks_rigor_detected(self) -> None:
         """Test 'bootcamp lacks rigor' language detected."""
         text = "bootcamp education lacks fundamentals"
@@ -68,6 +68,7 @@ class TestBiasDetector:
 
         assert is_biased is False
 
+    # failed
     def test_demographic_assumption_age_detected(self) -> None:
         """Test demographic assumption about age detected."""
         text = "young developers can't handle complex systems"
@@ -188,6 +189,7 @@ class TestBiasDetector:
 
         assert is_biased is False
 
+    # failed
     def test_coding_bootcamp_variant(self) -> None:
         """Test 'coding bootcamp' variant is detected."""
         text = "coding bootcamp graduates can't write enterprise code"
@@ -204,6 +206,7 @@ class TestBiasDetector:
 
         assert is_biased is True
 
+    # failed
     def test_developer_vs_programmer_distinction(self) -> None:
         """Test both developer and programmer terms detected."""
         text_dev = "bootcamp developers can't handle production systems"
@@ -215,6 +218,7 @@ class TestBiasDetector:
         assert is_biased_dev is True
         assert is_biased_prog is True
 
+    # failed
     def test_multiple_bias_indicators(self) -> None:
         """Test text with multiple bias indicators."""
         text = (
@@ -225,6 +229,7 @@ class TestBiasDetector:
 
         assert is_biased is True
 
+    # failed
     def test_negative_educational_claim(self) -> None:
         """Test negative claims about education detected."""
         text = "self-taught developers are not equal to university graduates"
@@ -241,6 +246,7 @@ class TestBiasDetector:
 
         assert is_biased is True
 
+    # failed
     def test_rich_poor_assumption(self) -> None:
         """Test rich/poor background assumption detected."""
         text = "developers from poor backgrounds can't afford proper tools"
@@ -279,6 +285,7 @@ class TestBiasDetector:
 
         assert is_biased is False
 
+    # failed
     def test_assumption_vs_observation(self) -> None:
         """Test that observations are not flagged, assumptions are."""
         observation = "your resume shows bootcamp attendance"  # Factual

@@ -19,14 +19,14 @@ The file `bias_detector.py` uses regex patterns to detect bias. This means that 
 
 ## Week 8 — Reproduction & solution planning
 
-**Reproduction commit link:** [link to commit documenting the reproduced issue]
+**Reproduction commit link:** [https://github.com/carlinnv/pathreview/tree/fix/151-bias-detector-too-narrow](https://github.com/carlinnv/pathreview/tree/fix/151-bias-detector-too-narrow)
 
 **Reproduction summary:**
-[1–2 sentences: How did you reproduce the issue? What did you observe?]
+I reproduced the issue by running the test suite. I found that 9 out of the 32 tests passed. The ones that failed typically failed because the regex used to detect biased sentences were too rigid to capture the full range of sentence diversity. 
 
-**PLAN.md link:** [link to PLAN.md in your fork]
+**PLAN.md link:** [Link to PLAN.md](https://github.com/carlinnv/pathreview/blob/fix/151-bias-detector-too-narrow/PLAN.md)
 
-**Walkthrough video (recommended):** [link to your Loom video, ≤2 min — recommended, not graded]
+<!-- **Walkthrough video (recommended):** [link to your Loom video, ≤2 min — recommended, not graded] -->
 
 **Blockers or open questions:**
-[Anything you're still uncertain about going into Week 9, or leave blank]
+One thing that stood out to me was that in one of the tests, a factual observation was flagged as biased, while a biased assumption was not. Something that I want to consider is how I can ensure that all biased sentences are captured while also keeping a balance and making sure that factual observations do not get flagged as biased. 
