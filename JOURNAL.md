@@ -30,3 +30,35 @@ I reproduced the issue by running the test suite. I found that 9 out of the 32 t
 
 **Blockers or open questions:**
 One thing that stood out to me was that in one of the tests, a factual observation was flagged as biased, while a biased assumption was not. Something that I want to consider is how I can ensure that all biased sentences are captured while also keeping a balance and making sure that factual observations do not get flagged as biased. 
+
+
+
+## Week 9 — Solution building & PR submission
+
+### Check-in 1 (mid-week)
+
+**Current progress:**
+I have currently implemented the expanded regex patterns and semantic heuristic check. I also checked against the test set and specifically looked for whether or not the new bias detector system is too strict. 
+
+**Next steps:**
+I am going to work on the pull request and making edits before submitting. 
+
+**Blockers:**
+
+---
+
+### Check-in 2 (end of week)
+
+**PR link:** [Link to pull request](https://github.com/ascherj/pathreview/pull/770)
+
+**Branch:** fix/151-bias-detector-too-narrow
+
+**What you built:**
+I expanded the bias detector's regex patterns so they catch more common wording variations around bootcamps, self-taught backgrounds, and demographic assumptions. I also added a semantic heuristic check that looks through feedback sentence-by-sentence and flags a protected-background term when it appears alongside a negative capability claim and a competence-related term.
+
+**Tests added or updated:**
+`tests/unit/test_bias_detector.py` was updated to cover the broader regex matches, the semantic fallback, and the non-biased cases that should stay unflagged.
+
+**Self-review confirmation:** [x] make check passes  [x] make test-unit passes
+
+**Draft PR feedback received from:** none
