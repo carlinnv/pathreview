@@ -7,21 +7,22 @@ When `detect_bias` is called, it uses a list containing regex strings to detect 
 
 ### Map
 Files I expect to touch: 
-- `bias_detector.py`: Lines 13-25 contain the lists that store the regex patterns. I will most likely get rid of these lists and opt for a more nuanced way of detecting bias, such as by using vector mapping or even calling on an LLM to detect biased wording. 
-- `test_bias_detector.py`: I will use this test to see if the changes I make in `bias_detector.py` can sufficiently fix the issue. 
+- `safety/bias_detector.py`: expand the existing regex coverage and add a lightweight semantic heuristic that looks for protected-background terms paired with negative capability claims.
+- `tests/unit/test_bias_detector.py`: verify the broader patterns and semantic fallback without over-flagging neutral or positive feedback.
 
 ### Plan
-1. Read `bias_detector.py` and identify where in the code the feedback is passed and analyzed for bias. This will most likely be in the `detect_bias` function, which takes a string of feedback. 
-2. Prompt AI for existing methods used to analyze text for semantic meaning. I will choose one that best fits the scenario, based on how expensive and fast each approach works. 
-3. Incorporate the analysis into the function. Rather than relying on regex patterns or key words, I will likely have to convert the text into numeric representation or pass it into another model to assess its bias. 
+1. Broaden the existing regex patterns so they match common variants like `self-taught`, `coding bootcamp`, and more flexible dismissive phrasing.
+2. Add a small sentence-level semantic check that flags a background term only when it appears alongside a negative capability claim and a competence-related term.
+3. Validate the detector against `tests/unit/test_bias_detector.py` to make sure the broader coverage does not create false positives.
 
 ### Inputs & outputs
-My fix takes the AI-generated feedback as a string. It then outputs a tuple containing a boolean and a string. The boolean signifies whether or not bias is detected in the AI-given feedback, while the string is the reason behind the bias analysis. 
+The detector takes AI-generated feedback as a string and returns a tuple containing a boolean and a string. The boolean indicates whether bias was detected, and the string explains the reason.
 
 
 ### Risks & unknowns
-Something that could go wrong is making the bias detector so flexible that it ends up detecting non-biased statements as biased. I am concerned about this, so I will definitely implement more tests to make sure that my system is balanced and not overly strict. 
+The main risk is making the detector too broad and flagging neutral statements that merely mention bootcamps, education, age, or background. The current mitigation is to keep the semantic heuristic sentence-scoped and require both a protected-background term and a negative competence claim.
 
 ### Edge cases
-- Feedback that uses the keywords mentioned in the regex patterns but is not actually biased
-- Feedback that is a mix of biased and non-biased
+- Feedback that mentions bootcamps, self-taught paths, or demographics in a positive or neutral way
+- Feedback that mixes one biased sentence with several neutral sentences
+- Feedback that uses slightly different phrasing for the same dismissal pattern
