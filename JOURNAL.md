@@ -62,3 +62,35 @@ I expanded the bias detector's regex patterns so they catch more common wording 
 **Self-review confirmation:** [x] make check passes  [x] make test-unit passes
 
 **Draft PR feedback received from:** none
+
+
+
+## Week 10 — Iteration & reflection
+
+### Reviewer feedback
+
+**Feedback received:** [ ] Yes  [✓] No — still awaiting review
+
+**Summary of feedback:**
+No review came in.
+
+**How you responded:**
+
+---
+
+### Reflection
+
+**What was harder than you expected?**
+I think the hardest part of this project was understanding the codebase. Part of the task was learning how to delve into and understand a large codebase by reading the documents and using the tools available to us. 
+
+**What did you learn about working in a large codebase?**
+I learned that AI can be a fantastic tool for working in a large codebase. I used it to summarize specific functions within files and also scan for dependencies to see how each file links to one another. 
+
+**How did AI tools help — and where did they fall short?**
+I used AI to get familiar with the files within the codebase I was working with. It was also a really good tool when it came to suggesting implementations, because there were definitely times I wanted to achieve a certain feature but wasn't able to. 
+
+**What would you do differently if you started over?**
+Although I hit the deadlines on time, I would have started over so I could get feedback on my PR. I think it is definitely important to learn not just how to write documents such as PRs but also to respond to them professionally. 
+
+**What are you most proud of from this module?**
+I am most proud of myself for learning how exactly PR works. In the future, I will definitely use things like the pull request template in the .github folder to make contributions to my own projects easier. 
